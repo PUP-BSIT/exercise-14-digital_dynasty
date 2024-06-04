@@ -252,8 +252,7 @@ form {
   }
 }
 
-/* New CSS for Sort Comments section */
-.sort-buttons {
+.sorted_buttons {
   margin: 20px 0;
   padding: 20px;
   border-radius: 8px;
@@ -263,7 +262,7 @@ form {
   background-color: rgba(148, 176, 185, 0.963);
 }
 
-.sort-buttons h2 {
+.sorted_buttons h2 {
   color: #000000;
   border-bottom: 2px solid #ffffff;
   padding-bottom: 10px;
@@ -271,7 +270,7 @@ form {
   text-align: center;
 }
 
-.sort-buttons button {
+.sorted_buttons button {
   padding: 10px 20px;
   margin: 10px;
   background-color: rgba(192, 232, 247, 0.963);
@@ -279,6 +278,6 @@ form {
   cursor: pointer;
 }
 
-.sort-buttons button:hover {
+.sorted_buttons button:hover {
   background-color: rgba(148, 176, 185, 0.963);
 }
