@@ -1,7 +1,7 @@
 const searchButton = document.getElementById("searchButton");
 const countryInput = document.getElementById("countryInput");
-const countryDetails = document.getElementById("country-details");
-const sameRegionCountries = document.getElementById("same-region-countries");
+const countryDetails = document.getElementById("country_details");
+const sameRegionCountries = document.getElementById("same_region_countries");
 
 searchButton.addEventListener("click", async () => {
   const countryName = countryInput.value.trim();
@@ -27,7 +27,7 @@ searchButton.addEventListener("click", async () => {
       <p><strong>Capital:</strong> ${
         country.capital ? country.capital[0] : "N/A"
       } </p>
-       <p><strong>Region:</strong> ${country.region ? country.region : "N/A"}</p>
+       <p><strong>Region:</strong> ${country.region ? country.region :"N/A"}</p>
        <p><strong>Languages:</strong> ${
         country.languages ? Object.values(country.languages).join(", ") : "N/A"
       }</p>
