@@ -40,13 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function addComment(name, text, date) {
     const commentElement = document.createElement("p");
     commentElement.innerHTML =
-      "Name: " +
-      name +
-      "<p>Comment: " +
-      text +
-      "<p><small>" +
-      date.toLocaleString() +
-      "</small>";
+    "Name: " + comment.name +
+    "<p>Comment: " + comment.text + "</p>" +
+    "<p><small>" +comment.date.toLocaleString() 
+    "</p></small>";
     commentsContainer.appendChild(commentElement);
 
     comments.push({ name: name, text: text, date: date });
@@ -64,13 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
     comments.forEach(function (comment) {
       const commentElement = document.createElement("p");
       commentElement.innerHTML =
-        "Name: " +
-        comment.name +
-        "<p>Comment: " +
-        comment.text +
-        "<p><small>" +
-        comment.date.toLocaleString() +
-        "</small>";
+      "Name: " + name +
+      "<p>Comment: " + text + "</p>"
+      "<p><small>" + date.toLocaleString() +
+        "</p></small>";
       commentsContainer.appendChild(commentElement);
     });
   }
@@ -87,11 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function searchCountry() {
-  let countryName = document.getElementById("countryInput").value.trim();
+  let countryName = document.getElementById("country_input").value.trim();
   if (!countryName) {
-    document.getElementById("countryDetails").innerHTML =
+    document.getElementById("country_details").innerHTML =
       "<p>Please enter a country name.</p>";
-    document.getElementById("sameRegionCountries").innerHTML = "";
+    document.getElementById("same_region_countries").innerHTML = "";
     return;
   }
 
@@ -102,26 +96,28 @@ function searchCountry() {
       }
       return response.json();
     })
-    .then(function (countryData) {
-      let country = countryData[0];
+    .then(function (country_data) {
+      let country = country_data[0];
       let details = `
         <h2>Country Details - ${country.name.common}</h2>
         <p><strong>Capital:</strong> 
-        ${country.capital ? country.capital[0] : "N/A"}</p>
+        ${country.capital ? country.capital[0] : "N/A"}
+        </p>
         <p><strong>Population:</strong> 
-        ${country.population ? country.population.toLocaleString() : "N/A"}</p>
+        ${country.population ? country.population.toLocaleString() : "N/A"}
+        </p>
         <p><strong>Region:</strong> 
-        ${country.region ? country.region : "N/A"}</p>
+        ${country.region ? country.region : "N/A"}
+        </p>
         <p><strong>Languages:</strong> 
         ${
-          country.languages
-            ? Object.values(country.languages).join(", ")
-            : "N/A"
-        }</p>
+          country.languages? Object.values(country.languages).join(", "):"N/A"
+        }
+        </p>
         <p><strong>Timezones:</strong> 
-        ${country.timezones ? country.timezones.join(", ") : "N/A"}</p>
-      `;
-      document.getElementById("countryDetails").innerHTML = details;
+        ${country.timezones ? country.timezones.join(", ") : "N/A"}
+        </p>`;
+      document.getElementById("country_details").innerHTML = details;
 
       return fetch("https://restcountries.com/v3.1/region/" + country.region);
     })
@@ -135,23 +131,20 @@ function searchCountry() {
       let region = regionData[0].region;
       let sameRegionCountriesList = regionData
         .map(function (c) {
-          return `
-          <div class="same-region-country">
-            <img src="${c.flags.svg}" alt="Flag of ${c.name.common}" width="50">
-            <p>${c.name.common}</p>
-          </div>
-        `;
+         return `<div class="same-region-country">
+             <img src="${c.flags.svg}"alt="Flag of ${c.name.common}"width="50">
+             <p>${c.name.common}</p>
+            </div>`;
         })
         .join("");
-      document.getElementById("sameRegionCountries").innerHTML = `
+      document.getElementById("same_region_countries").innerHTML = `
         <h2>Countries in the Same Region (${region})</h2>
-        <div>${sameRegionCountriesList}</div>
-      `;
+        <div>${sameRegionCountriesList}</div>`;
     })
     .catch(function (error) {
       console.error("Error fetching data:", error);
-      document.getElementById("countryDetails").innerHTML =
+      document.getElementById("country_details").innerHTML =
         "<p>An error occurred: " + error.message + "</p>";
-      document.getElementById("sameRegionCountries").innerHTML = "";
+      document.getElementById("same_cegion_countries").innerHTML = "";
     });
 }
