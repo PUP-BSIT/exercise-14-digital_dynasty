@@ -91,39 +91,44 @@
         <ol>
           <li>To be a Developer</li>
           <li>To learn some new Skills</li>
-          <li>to travel outside of country </li>
-          <li>to </li>
-          <ol>To be happy</ol>
+          <li>to travel outside of country</li>
+          <li>to</li>
+          <ol>
+            To be happy
+          </ol>
         </ol>
       </section>
 
       <section>
         <h2>Add a comment here</h2>
-        <form id="comment-form" class="add-comment">
+        <form id="comment_form" class="add-comment">
           <input
             type="text"
             name="name2"
-            id="comment-name"
+            id="comment_name"
             placeholder="Enter your name"
           />
           <textarea
             name="textarea-for-comment"
-            id="comment-text"
+            id="comment_text"
             placeholder="Add your comment here"
           >
           </textarea>
-          <button type="button" name="comment" id="submit-comment">Comment</button>
+          <button type="button" name="comment" id="submit_comment">
+            Comment
+          </button>
         </form>
       </section>
 
-      <section id="comments-container" class="comments-of-team">
-        <h2>Sorted Buttons</h2>
-        <button type="button" id="sort-asc">Sort by Date Ascending</button>
-        <button type="button" id="sort-desc">Sort by Date Descending</button>
+      <section id="sorted_buttons" class="comments-of-team">
         <h2>New Comments</h2>
+        <button type="button" id="sort_asc">Sort by Date Ascending</button>
+        <button type="button" id="sort_desc">Sort by Date Descending</button>
+        <section id="comments_container" class="comments-of-team">
+        </section>
       </section>
 
-      <section id="comments-container" class="comments-of-team">
+      <section id="hardcoded_comments" class="comments-of-team">
         <h2>Hardcoded Comments</h2>
         <p>Name: Paul Angelo Reyes</p>
         <p>Comment: You can do it!</p>
@@ -138,7 +143,6 @@
           world around you.
         </p>
       </section>
-
 
       <div class="oc-thoughts">
         <h2>Thoughts about online class</h2>
@@ -159,13 +163,13 @@
       </div>
     </main>
 
-    <div class="Contact">
+    <div class="contact">
       <h2>Contact Me</h2>
-      <form id="contact-form" class="form">
+      <form id="contact_form" class="form">
         <input type="email" name="email" id="email" placeholder="Email" />
         <input type="text" name="name" id="name" placeholder="Full Name" />
         <input type="text" name="subject" id="subject" placeholder="Subject" />
-        <input type="number" name="age" id="age" placeholder="Age"/>
+        <input type="number" name="age" id="age" placeholder="Age" />
         <label for="copy">Send me a copy</label>
         <input type="checkbox" name="copy" id="copy" />
         <textarea
@@ -173,12 +177,13 @@
           name="message"
           rows="3"
           cols="15"
-          placeholder="Message">
+          placeholder="Message"
+        >
         </textarea>
         <button type="submit" name="submit" id="submit">Submit</button>
       </form>
     </div>
 
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
   </body>
 </html>

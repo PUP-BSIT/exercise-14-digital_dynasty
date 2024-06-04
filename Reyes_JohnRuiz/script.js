@@ -1,10 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const commentNameInput = document.getElementById("comment-name");
-  const commentTextInput = document.getElementById("comment-text");
-  const submitCommentButton = document.getElementById("submit-comment");
-  const commentsContainer = document.getElementById("comments-container");
-  const sortAscButton = document.getElementById("sort-asc");
-  const sortDescButton = document.getElementById("sort-desc");
+document.addEventListener("DOMContentLoaded", function() {
+  initialize();
+});
+
+function initialize() {
+  const commentNameInput = document.getElementById("comment_name");
+  const commentTextInput = document.getElementById("comment_text");
+  const submitCommentButton = document.getElementById("submit_comment");
+  const commentsContainer = document.getElementById("comments_container");
+  const sortAscButton = document.getElementById("sort_asc");
+  const sortDescButton = document.getElementById("sort_desc");
 
   let comments = [];
 
@@ -14,12 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitCommentButton.disabled = !(nameValue && textValue);
   }
 
-  checkCommentValidity();
-
-  commentNameInput.addEventListener("input", checkCommentValidity);
-  commentTextInput.addEventListener("input", checkCommentValidity);
-
-  submitCommentButton.addEventListener("click", (e) => {
+  function submitComment(e) {
     e.preventDefault();
     const name = commentNameInput.value.trim();
     const text = commentTextInput.value.trim();
@@ -32,43 +31,47 @@ document.addEventListener("DOMContentLoaded", function () {
     commentNameInput.value = "";
     commentTextInput.value = "";
     checkCommentValidity();
-  });
-
-  function addComment(name, text, date) {
-    const commentElement = document.createElement("p");
-    commentElement.innerHTML = `Name: ${name}<br>Comment: 
-        ${text}<br><small>${date.toLocaleString()}</small>`;
-    commentsContainer.appendChild(commentElement);
-
-    comments.push({ name, text, date });
   }
 
-  sortAscButton.addEventListener("click", () => {
-    sortComments(true);
-  });
+  function addComment(name, text, date) {
+    comments.push({ name, text, date });
+    renderComments(comments);
+  }
 
-  sortDescButton.addEventListener("click", () => {
-    sortComments(false);
-  });
+  function createCommentElement(name, text, date) {
+    const commentElement = document.createElement("p");
+    commentElement.innerHTML = "Name: " + name + "<br>Comment: " + text + "<br><small>" + date.toLocaleString() + "</small>";
+    return commentElement;
+  }
 
-  function sortComments(ascending = true) {
-    const sortedComments = [...comments];
-    sortedComments.sort((a, b) =>
-      ascending ? a.date - b.date : b.date - a.date
-    );
+  function sortComments(ascending) {
+    const sortedComments = comments.slice();
+    sortedComments.sort(function(a, b) {
+      return ascending ? a.date - b.date : b.date - a.date;
+    });
     renderComments(sortedComments);
   }
 
   function renderComments(commentsToRender) {
-    const existingComments = commentsContainer.querySelectorAll("p");
-    existingComments.forEach(comment => comment.remove());
-  
-    commentsToRender.forEach((comment) => {
-      const commentElement = document.createElement("p");
-      commentElement.innerHTML = `Name: ${comment.name}<br>Comment: ${
-        comment.text
-      }<br><small>${comment.date.toLocaleString()}</small>`;
+    commentsContainer.innerHTML = "";
+    for (var i = 0; i < commentsToRender.length; i++) {
+      const comment = commentsToRender[i];
+      const commentElement = createCommentElement(comment.name, comment.text, comment.date);
       commentsContainer.appendChild(commentElement);
-    });
+    }
+    // Re-attach the sort buttons after rendering comments
+    commentsContainer.appendChild(sortAscButton);
+    commentsContainer.appendChild(sortDescButton);
   }
-});
+
+  checkCommentValidity();
+  commentNameInput.addEventListener("input", checkCommentValidity);
+  commentTextInput.addEventListener("input", checkCommentValidity);
+  submitCommentButton.addEventListener("click", submitComment);
+  sortAscButton.addEventListener("click", function() {
+    sortComments(true);
+  });
+  sortDescButton.addEventListener("click", function() {
+    sortComments(false);
+  });
+}
