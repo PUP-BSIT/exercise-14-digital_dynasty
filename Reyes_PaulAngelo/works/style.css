@@ -137,6 +137,26 @@ input[type="checkbox"] {
   width: auto;
 }
 
+.link-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-container a {
+  color: #fff; 
+  font-family: cursive;
+  font-size: medium;
+  font-weight: bold;
+  text-decoration: none; 
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.link-container a:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 button {
   padding: 10px;
   width: 100%;
