@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const commentNameInput = document.getElementById("comment-name");
-  const commentTextInput = document.getElementById("comment-text");
-  const submitCommentButton = document.getElementById("submit-comment");
-  const commentForm = document.getElementById("comment-form");
-  const commentsContainer = document.getElementById("comments-container");
-  const sortAscButton = document.getElementById("sort-asc");
-  const sortDescButton = document.getElementById("sort-desc");
+  const commentNameInput = document.getElementById("comment_name");
+  const commentTextInput = document.getElementById("comment_text");
+  const submitCommentButton = document.getElementById("submit_comment");
+  const commentForm = document.getElementById("comment_form");
+  const commentsContainer = document.getElementById("comments_container");
+  const sortAscButton = document.getElementById("sort_asc");
+  const sortDescButton = document.getElementById("sort_desc");
 
   let comments = [];
 
@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addComment(name, text, date) {
     const commentElement = document.createElement("p");
-    commentElement.innerHTML = `Name: ${name}<br>Comment: 
-    ${text}<br><small>${date.toLocaleString()}</small>`;
+    commentElement.innerHTML = `Name: ${name}<p>Comment: 
+    ${text}<p><small>${date.toLocaleString()}</small>`;
     commentsContainer.appendChild(commentElement);
 
     comments.push({ name, text, date });
@@ -50,9 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
     commentsContainer.innerHTML = "";
     comments.forEach((comment) => {
       const commentElement = document.createElement("p");
-      commentElement.innerHTML = `Name: ${comment.name}<br>Comment: ${
+      commentElement.innerHTML = `Name: ${comment.name}<p>Comment: ${
         comment.text
-      }<br><small>${comment.date.toLocaleString()}</small>`;
+      }<p><small>${comment.date.toLocaleString()}</small>`;
       commentsContainer.appendChild(commentElement);
     });
   }
