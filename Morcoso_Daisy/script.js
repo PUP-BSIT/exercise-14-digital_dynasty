@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let nameInput = document.getElementById("name");
-    let commentTextarea = document.getElementById("textarea_for_comment");
-    let commentButton = document.getElementById("comment");
+    const nameInput = document.getElementById("name");
+    const commentTextarea = document.getElementById("textarea_for_comment");
+    const commentButton = document.getElementById("comment");
   
     nameInput.addEventListener("input", checkFormValidity);
     commentTextarea.addEventListener("input", checkFormValidity);
@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let comments = [];
   
   function checkFormValidity() {
-    let nameValue = document.getElementById("name").value.trim();
-    let commentValue = document
+    const nameValue = document.getElementById("name").value.trim();
+    const commentValue = document
       .getElementById("textarea_for_comment")
       .value.trim();
     document.getElementById("comment").disabled = !(nameValue && commentValue);
