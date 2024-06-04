@@ -40,10 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function addComment(name, text, date) {
     const commentElement = document.createElement("p");
     commentElement.innerHTML =
-    "Name: " + comment.name +
-    "<p>Comment: " + comment.text + "</p>" +
-    "<p><small>" +comment.date.toLocaleString() 
-    "</p></small>";
+      "Name: "+name +
+      "<p>Comment: "+text+"<p><small>"+date.toLocaleString()+"</small>";
     commentsContainer.appendChild(commentElement);
 
     comments.push({ name: name, text: text, date: date });
@@ -61,10 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
     comments.forEach(function (comment) {
       const commentElement = document.createElement("p");
       commentElement.innerHTML =
-      "Name: " + name +
-      "<p>Comment: " + text + "</p>"
-      "<p><small>" + date.toLocaleString() +
-        "</p></small>";
+        "Name: "+comment.name +
+        "<p>Comment: "+comment.text +
+        "<p><small>"+comment.date.toLocaleString()+"</small>";
       commentsContainer.appendChild(commentElement);
     });
   }
