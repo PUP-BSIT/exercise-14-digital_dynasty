@@ -19,9 +19,8 @@ function searchCountry() {
       let country = countryData[0];
       let details = `
             <h2>Country Details - ${country.name.common}</h2>
-            <img src="${country.flags.svg}" alt="Flag of ${
-        country.name.common
-      }" width="100">
+            <img src="${country.flags.svg}" alt="Flag of ${country.name.common}
+                     " width="100">
             <p><strong>Area:</strong> ${
               country.area
                 ? country.area.toLocaleString() + " square kilometers"
