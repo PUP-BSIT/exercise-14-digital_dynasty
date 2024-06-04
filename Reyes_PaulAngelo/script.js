@@ -9,8 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let comments = [];
 
-  commentNameInput.addEventListener("input", checkCommentValidity);
-  commentTextInput.addEventListener("input", checkCommentValidity);
+  commentNameInput.addEventListener("input", function () {
+    checkCommentValidity();
+  });
+
+  commentTextInput.addEventListener("input", function () {
+    checkCommentValidity();
+  });
 
   function checkCommentValidity() {
     const nameValue = commentNameInput.value.trim();
@@ -18,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitCommentButton.disabled = !(nameValue && textValue);
   }
 
-  submitCommentButton.addEventListener("click", (e) => {
+  submitCommentButton.addEventListener("click", function (e) {
     e.preventDefault();
     const name = commentNameInput.value.trim();
     const text = commentTextInput.value.trim();
@@ -34,35 +39,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addComment(name, text, date) {
     const commentElement = document.createElement("p");
-    commentElement.innerHTML = `Name: ${name}<p>Comment: 
-    ${text}<p><small>${date.toLocaleString()}</small>`;
+    commentElement.innerHTML =
+      "Name: "+name +
+      "<p>Comment: "+text+"<p><small>"+date.toLocaleString()+"</small>";
     commentsContainer.appendChild(commentElement);
 
-    comments.push({ name, text, date });
+    comments.push({ name: name, text: text, date: date });
   }
 
-  function sortComments(ascending = true) {
-    comments.sort((a, b) => (ascending ? a.date - b.date : b.date - a.date));
+  function sortComments(ascending) {
+    comments.sort(function (a, b) {
+      return ascending ? a.date - b.date : b.date - a.date;
+    });
     renderComments();
   }
 
   function renderComments() {
     commentsContainer.innerHTML = "";
-    comments.forEach((comment) => {
+    comments.forEach(function (comment) {
       const commentElement = document.createElement("p");
-      commentElement.innerHTML = `Name: ${comment.name}<p>Comment: ${
-        comment.text
-      }<p><small>${comment.date.toLocaleString()}</small>`;
+      commentElement.innerHTML =
+        "Name: "+comment.name +
+        "<p>Comment: "+comment.text +
+        "<p><small>"+comment.date.toLocaleString()+"</small>";
       commentsContainer.appendChild(commentElement);
     });
   }
 
-  sortAscButton.addEventListener("click", () => {
+  sortAscButton.addEventListener("click", function () {
     sortComments(true);
     sortAscButton.blur();
   });
 
-  sortDescButton.addEventListener("click", () => {
+  sortDescButton.addEventListener("click", function () {
     sortComments(false);
     sortDescButton.blur();
   });
