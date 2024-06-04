@@ -4,7 +4,10 @@ form {
   padding: 10px;
 }
 
-#email #name #subject #age {
+#email, 
+#name, 
+#subject,
+#age {
   width: 50px;
 }
 
