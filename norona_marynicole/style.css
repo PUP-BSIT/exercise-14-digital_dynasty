@@ -163,3 +163,7 @@ body {
     background-color: lightyellow;
   }
 }
+
+.countries-pages {
+  border: 2px black solids;
+}
