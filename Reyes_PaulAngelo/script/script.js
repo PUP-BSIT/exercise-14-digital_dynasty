@@ -101,23 +101,23 @@ function searchCountry() {
       let details = `
         <h2>Country Details - ${country.name.common}</h2>
         <p><strong>Capital:</strong> 
-        ${country.capital ? country.capital[0] : "N/A"}
+          ${country.capital ? country.capital[0] : "N/A"}
         </p>
         <p><strong>Population:</strong> 
-        ${country.population ? country.population.toLocaleString() : "N/A"}
+          ${country.population ? country.population.toLocaleString() : "N/A"}
         </p>
         <p><strong>Region:</strong> 
-        ${country.region ? country.region : "N/A"}
+          ${country.region ? country.region : "N/A"}
         </p>
         <p><strong>Languages:</strong> 
-        ${
-          country.languages? Object.values(country.languages).join(", "):"N/A"
-        }
+          ${
+           country.languages? Object.values(country.languages).join(", "):"N/A"
+          }
         </p>
         <p><strong>Timezones:</strong> 
-        ${country.timezones ? country.timezones.join(", ") : "N/A"}
+          ${country.timezones ? country.timezones.join(", ") : "N/A"}
         </p>`;
-      document.getElementById("country_details").innerHTML = details;
+        document.getElementById("country_details").innerHTML = details;
 
       return fetch("https://restcountries.com/v3.1/region/" + country.region);
     })
@@ -135,11 +135,10 @@ function searchCountry() {
              <img src="${c.flags.svg}"alt="Flag of ${c.name.common}"width="50">
              <p>${c.name.common}</p>
             </div>`;
-        })
-        .join("");
-      document.getElementById("same_region_countries").innerHTML = `
-        <h2>Countries in the Same Region (${region})</h2>
-        <div>${sameRegionCountriesList}</div>`;
+        }).join("");
+        document.getElementById("same_region_countries").innerHTML = `
+          <h2>Countries in the Same Region (${region})</h2>
+          <div>${sameRegionCountriesList}</div>`;
     })
     .catch(function (error) {
       console.error("Error fetching data:", error);
